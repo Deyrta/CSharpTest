@@ -13,8 +13,11 @@ namespace CSharpTest
 
             foreach(WeekEnd weekend in weekEnds)
             {
-                if (startDate >= weekend.EndDate && startDate <= weekend.StartDate)
-                    continue;
+                if (startDate == weekend.EndDate && startDate == weekend.StartDate)
+                {
+                    startDate = startDate.AddDays(1);
+                    endDate = startDate.AddDays(dayCount - 1);
+                }    
                 if (endDate < weekend.StartDate)
                     continue;
                 if(startDate <= weekend.EndDate)
